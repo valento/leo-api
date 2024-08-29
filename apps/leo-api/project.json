@@ -1,0 +1,26 @@
+{
+  "name": "leo-api",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/leo-api/src",
+  "projectType": "application",
+  "tags": [],
+  "targets": {
+    "serve": {
+      "executor": "@nx/js:node",
+      "defaultConfiguration": "development",
+      "dependsOn": ["build"],
+      "options": {
+        "buildTarget": "leo-api:build",
+        "runBuildTargetDependencies": false
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "leo-api:build:development"
+        },
+        "production": {
+          "buildTarget": "leo-api:build:production"
+        }
+      }
+    }
+  }
+}
