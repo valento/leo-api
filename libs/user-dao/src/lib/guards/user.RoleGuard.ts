@@ -21,14 +21,11 @@ export class RoleGuard implements CanActivate {
     const clearances = await this.reflector.getAllAndOverride(
       'roles',
       [ context.getHandler(), context.getClass() ]
-    )    
+    )
 
-    for( const required_role of clearances ) {
-      if( required_role === role ) return true
-            
-      throw new UnauthorizedException()
-    }
+    if( clearances.indexOf(role) > -1 ) return true
     
-    return true
+    throw new UnauthorizedException()
+
   }
 }

@@ -43,10 +43,10 @@ curl localhost:3000/leo-api
 # TOEKEN for ADMIN: admin [number]
 ```
 
-### Few words:
+### Few short words:
   - I did the work on transition - I had to travel
-  - It took well more than 6hrs in few trains
-  - I used Swagger to try it and to avoid making Next-app (eventually)
-  - Swagger-Bearer-Token took me hours to solve, but aslo Nest decorators/guards to get what I need - simmulate JWT with role/id claims
-  - I stoped when got tired and when time went well over required, not completing the tasks (all CRUD, tests), but from where I could get it, it takes little to finish
+  - It took well more than 6hrs in few trains - eventhough I knew what I'm doing, there's always surprises.
+  - So, I stoped when got tired and when time went well over required, not completing the tasks (not all CRUD, no tests), but from where I left it, it takes little to finish and mayor issues are solved... I think
+  - I used Swagger just to try it and to avoid making Next-app (eventually)
+  - Swagger-Bearer-Token took me hours to solve, but aslo MySQL(Prisma connection), Nest decorators/guards to get what I need - simmulate JWT with role/id claims
   - Thank you, it was beneficial to me at least!

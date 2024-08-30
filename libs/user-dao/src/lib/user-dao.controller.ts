@@ -31,7 +31,7 @@ export class UserDaoController {
   @Get()
   // Atach role-metadata to the route
   @Roles(Role.ADMIN)
-  async getAll(req: Request) {    
+  async getAll() {    
     return this.service.getAll()
   }
 
