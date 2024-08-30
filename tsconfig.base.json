@@ -14,7 +14,11 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@leo-api/db-client": ["libs/db-client/src/index.ts"],
+      "@leo-api/nest-db-client": ["libs/nest-db-client/src/index.ts"],
+      "@leo-api/user-dao": ["libs/user-dao/src/index.ts"]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }

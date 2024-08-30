@@ -1,0 +1,28 @@
+{
+  "name": "db-client",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/db-client/src",
+  "projectType": "library",
+  "tags": [],
+  "// targets": "to see all targets run: nx show project db-client --web",
+  "targets": {
+    "gen-client": {
+      "command": "prisma generate",
+      "options": {
+        "cwd": "libs/db-client"
+      }
+    },
+    "migrate:dev": {
+      "command": "prisma migrate dev",
+      "options": {
+        "cwd": "libs/db-client"
+      }
+    },
+    "push:dev": {
+      "command": "prisma db push",
+      "options": {
+        "cwd": "libs/db-client"
+      }
+    }
+  }
+}

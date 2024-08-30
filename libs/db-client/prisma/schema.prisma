@@ -1,0 +1,29 @@
+generator client {
+  provider        = "prisma-client-js"
+  output          = "../../../node_modules/.prisma/schema-leoapi/client/leoapi"
+}
+
+datasource db {
+  provider          = "mysql"
+  url               = env("MYSQL_URL")
+}
+
+model user {
+  id              Int               @id @default(autoincrement())
+  name            String            @default("Anon") @db.VarChar(20)
+  email           String            @unique @db.VarChar(254)
+  password        String            @db.VarChar(254)
+  access_tokens   access_token[]
+  role            String?           @default("user") @db.VarChar(20)
+  created_at      DateTime?         @default(now())
+  updated_at      DateTime?         @updatedAt
+}
+
+model access_token {
+  id            Int      @id @unique @default(autoincrement())
+  userId        Int
+  user          user        @relation(fields: userId, references: [id], onDelete: Cascade)
+  expired       Boolean     @default(false)
+  created_at    DateTime?   @default(now())
+  updated_at    DateTime?   @updatedAt
+}
