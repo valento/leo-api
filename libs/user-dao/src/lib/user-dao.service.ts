@@ -68,5 +68,15 @@ export class UserDaoService {
   //   }
   // }
 
+  delete = async ( id: number ) => {
+    const result = await this.dbClient.user.delete({
+      where: { id }
+    })
+    return {
+      success: true,
+      result
+    }
+  }
+
 
 }

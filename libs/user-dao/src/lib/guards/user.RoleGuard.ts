@@ -18,9 +18,9 @@ export class RoleGuard implements CanActivate {
     const req = context.switchToHttp().getRequest()
     const { role, id } = req.token
 
-    const clearances = await this.reflector.getAllAndOverride(
+    const clearances = await this.reflector.get(
       'roles',
-      [ context.getHandler(), context.getClass() ]
+      context.getHandler()
     )
 
     if( clearances.indexOf(role) > -1 ) return true

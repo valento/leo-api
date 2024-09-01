@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Param, Post, Put, UseGuards } from '@nestjs/common'
+import { Body, Controller, Delete, Get, Param, Post, Put, UseGuards } from '@nestjs/common'
 import { UserDaoService } from './user-dao.service'
 
 import { Prisma } from '.prisma/schema-leoapi/client/leoapi'
@@ -7,6 +7,7 @@ import { Role, Roles } from './guards/role.decorator'
 import { AuthGuard } from './guards/auth.guard'
 import { RoleGuard } from './guards/user.RoleGuard'
 import { request } from 'http'
+import { IdGuard } from './guards/user.IdGuard'
 
 // ApiBearerAuth('dafaultBearerAuthorizationToken')
 @ApiTags('user')
@@ -17,7 +18,7 @@ export class UserDaoController {
   ) {}
 
   @ApiBearerAuth('dafaultBearerAuthorizationToken')
-  @UseGuards(AuthGuard, RoleGuard)
+  @UseGuards(AuthGuard, RoleGuard, IdGuard)
   @Get('/:id')
   @Roles(Role.ADMIN, Role.USER)
   async getOneById(
@@ -45,10 +46,20 @@ export class UserDaoController {
   }
 
   @ApiBearerAuth('dafaultBearerAuthorizationToken')
-  @UseGuards(AuthGuard, RoleGuard)
+  @UseGuards(AuthGuard, RoleGuard, IdGuard)
   @Put('update/:id')
   @Roles(Role.ADMIN, Role.USER)
-  async update(@Param('id') id: string) {
+  async update( @Param('id') id: string ) {
     return this.service.create
+  }
+
+  @ApiBearerAuth('dafaultBearerAuthorizationToken')
+  @UseGuards( AuthGuard, RoleGuard, IdGuard )
+  @Delete(':id')
+  @Roles(Role.ADMIN)
+  async remove(
+    @Param('id') id: string 
+  ) {
+    return { message: 'this passes...'}
   }
 }
