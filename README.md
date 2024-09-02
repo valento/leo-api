@@ -32,7 +32,7 @@ curl -H 'accept: */*' \
   -H 'Content-Type: application/json' \
   -H "Authorization: Bearer admin" \
 	'http://localhost:3000/leo-api/user/create' \
-  -d '{"name":"testero","email": "Tester'$i'@mail.com","role":"USER","password": "Tester'$i'@Foo"}'
+  -d '{"name":"Admin","email": "admin@mail.com","role":"ADMIN","password": "admin"}'
 # This curls the API to create multiple users
 bash ./seed.user.sh
 ```
